@@ -1,0 +1,34 @@
+package com.koreait.jsp;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/output-jsp")
+public class OutputJspServlet extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String loginId = req.getParameter("loginId");
+		String email = req.getParameter("email");
+		
+		String result1 =loginId + "님";
+		
+		req.setAttribute("loginId", result1);
+		req.setAttribute("email", email);
+		
+		
+		
+		req.getRequestDispatcher("/output.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+
+}
