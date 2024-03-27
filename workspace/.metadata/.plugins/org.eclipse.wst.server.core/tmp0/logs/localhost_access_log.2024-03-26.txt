@@ -69,3 +69,6 @@
 0:0:0:0:0:0:0:1 - - [26/Mar/2024:12:31:43 +0900] "GET /day01/input-jsp HTTP/1.1" 200 327
 0:0:0:0:0:0:0:1 - - [26/Mar/2024:12:31:48 +0900] "GET /day01/output-jsp?loginId=aaa&email=aaa%40aaa HTTP/1.1" 200 198
 0:0:0:0:0:0:0:1 - - [26/Mar/2024:12:31:48 +0900] "GET /day01/output-jsp?loginId=aaa&email=aaa%40aaa HTTP/1.1" 200 198
+127.0.0.1 - - [26/Mar/2024:12:38:44 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [26/Mar/2024:12:38:49 +0900] "GET /day01/input-jsp HTTP/1.1" 200 327
+0:0:0:0:0:0:0:1 - - [26/Mar/2024:12:38:54 +0900] "GET /day01/output-jsp?loginId=aaaa&email=aaa%40aaa HTTP/1.1" 200 202
