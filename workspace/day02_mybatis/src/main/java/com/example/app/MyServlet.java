@@ -26,6 +26,8 @@ public class MyServlet extends HttpServlet{
 		String gender = req.getParameter("gender");
 		
 		SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSessionfactory();
+//		sql세션팩토리의 openSession()을 사용하면 sqlSession객체를 반환한다.
+//		openSession()에 true를 전달해야 auto commit이 된다.
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
 		Map<String, String> userMap = new HashMap<>();
