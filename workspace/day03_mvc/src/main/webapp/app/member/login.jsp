@@ -9,9 +9,9 @@
 </head>
 <body>
 	 <main>
-      <form action="" method="post">
+      <form action="/member/loginOk.me" method="post">
          <div class="id">
-            id : <input type="text" name="loginId" />
+            id : <input type="text" name="loginId" value="${loginId} }"/>
          </div>
          <div class="password">
             pw : <input type="password" name="password" />

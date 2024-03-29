@@ -5,4 +5,9 @@
 	INSERT INTO TBL_MEMBER(MEMBER_ID,LOGIN_ID,PASSWORD,NAME, AGE,GENDER)
 	VALUES(SEQ_MEMBER.nextval, #{loginId}, #{password}, #{name}, #{age}, #{gender})
 	</insert>
+	
+	<select id="login" parameterType="memberDto" resultType="memberDto">
+		SELECT MEMBER_ID, NAME FROM TBL_MEMBER
+		WHERE LOGIN_ID = #{loginId} AND PASSWORD = #{password}
+	</select>
 </mapper>

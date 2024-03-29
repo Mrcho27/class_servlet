@@ -7,11 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.ibatis.session.SqlSession;
-
-import com.example.app.member.dto.MemberDto;
-import com.mybatis.config.MyBatisConfig;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("*.me")
 public class MemberFrontController extends HttpServlet{
@@ -45,23 +41,26 @@ public class MemberFrontController extends HttpServlet{
 	    case "/member/joinOk.me":
 	    	System.out.println("joinOk!!");
 	    	
-	    	MemberDto memberDto = new MemberDto();
-	    	memberDto.setLoginId(req.getParameter("loginId"));
-	    	memberDto.setPassword(req.getParameter("password"));
-	    	memberDto.setName(req.getParameter("name"));
-	    	memberDto.setGender(req.getParameter("gender"));
-	    	memberDto.setAge(Integer.parseInt(req.getParameter("age")));
-	    	
-	    	
-	    	SqlSession sqlSession = MyBatisConfig.getSessionfactory().openSession(true);
-	    	sqlSession.insert("member.join", memberDto);
+	    	new JoinOkController().execute(req, resp);
 	    	
 	    	resp.sendRedirect("/");
 	    	break;
 	    case "/member/login.me":
+	    	HttpSession session = req.getSession();
+	    	Integer memberId = (Integer)session.getAttribute("memberId");
+	    	
+	    	if(memberId != null) {
+	    		resp.sendRedirect("/");
+	    		break;
+	    	}
+	    	
+	    	new LoginController().execute(req,resp);
 	    	req.getRequestDispatcher("/app/member/login.jsp").forward(req, resp);
 	    	break;
 	    case "/member/loginOk.me":
+	    	new LoginOkController().execute(req, resp);
+	    	
+	    	resp.sendRedirect("/");
 	    	break;
 	    }
 	    
